@@ -1,0 +1,29 @@
+.landing {
+    height: 100vh;
+    width: 100%;
+    background: #04080F;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.fandom-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fandom-container {
+    height: 180px;
+    width: 90%;
+    margin-top: 15px;
+    border-radius: 10px;
+    background: #333138;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fandom-container img {
+    height: 95%;
+    width: 80%;
+}
