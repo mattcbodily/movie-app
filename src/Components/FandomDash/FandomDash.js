@@ -11,7 +11,7 @@ const FandomDash = props => {
     useEffect(() => {
         setFandom(props.fandomArr.find(element => element.fandom_id === +props.match.params.id));
         if(fandom.fandom_name){
-            axios.get(`http://www.omdbapi.com/?s=${fandom.fandom_name}&apikey=${movieKey}`)
+            axios.get(`http://www.omdbapi.com/?type=movie&s=${fandom.fandom_name}&apikey=${movieKey}`)
             .then(res => setMovies(res.data))
             .catch(err => console.log(err));
         }
