@@ -6,6 +6,6 @@ import FandomDash from './Components/FandomDash/FandomDash';
 export default (
     <Switch>
         <Route exact path='/' component={Landing}/>
-        <Route path='fandom/:id' component={FandomDash}/>
+        <Route path='/fandom/:id' component={FandomDash}/>
     </Switch>
 );

@@ -1,27 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {getFandoms} from '../../redux/reducers/fandomReducer';
+import {Link} from 'react-router-dom';
 import './Landing.css';
 
-export default props => {
-    let [fandomArr, setFandomArr] = useState([]);
-
-    useEffect(() => (
+const Landing = props => {
+    useEffect(() => {
         axios.get('/api/fandoms')
-        .then(res => setFandomArr(res.data))
+        .then(res => props.getFandoms(res.data))
         .catch(err => console.log(err))
-    ), [])
+    }, [props])
 
 
     return (
         <div className='landing'>
             <h1>Pick Your Fandom</h1>
             <section className='fandom-flex'>
-                {fandomArr.map((fandom, i) => (
-                    <div className='fandom-container'>
+                {props.fandomArr.map((fandom, i) => (
+                    <Link to={`/fandom/${fandom.fandom_id}`} key={i} className='fandom-container'>
                         <img src={fandom.image} alt={fandom.name}/>
-                    </div>
+                    </Link>
                 ))}
             </section>
         </div>
     )
 }
+
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(mapStateToProps, {getFandoms})(Landing);
