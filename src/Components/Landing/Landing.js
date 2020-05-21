@@ -1,8 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './Landing.css';
 
 export default props => {
-    let [fandomArr, setFandomArr] = useState([])
+    let [fandomArr, setFandomArr] = useState([]);
+
+    useEffect(() => (
+        axios.get('/api/fandoms')
+        .then(res => setFandomArr(res.data))
+        .catch(err => console.log(err))
+    ), [])
 
 
     return (

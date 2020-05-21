@@ -15,4 +15,7 @@ massive({
     console.log('db connected')
 });
 
+//fandom endpoints
+app.get('/api/fandoms', fandomCtrl.getFandoms);
+
 app.listen(SERVER_PORT, () => console.log(`Fandoms happening on ${SERVER_PORT}`));
